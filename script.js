@@ -1,6 +1,6 @@
 // changing vars
-let nomP1 = "Bobo";
-let nomP2 = "John";
+let nomP1 = "Jean1";
+let nomP2 = "Jean2";
 let type = "normal"; // normal or speed
 let maxScore = 11;
 
@@ -116,13 +116,13 @@ let timer = new Timer(00, 00, 00);
 
 timer.show(time);
 
-setInterval(()=>{
+let timerInterv = setInterval(()=>{
     timer.add_sec();
     timer.show(time);
 }, 1000);
 
 score1.show(set[0], score[0]);
-    score2.show(set[1], score[1]);
+score2.show(set[1], score[1]);
 
 document.addEventListener("keydown", (event) => {
     if(event.key == "ArrowRight"){
@@ -152,3 +152,60 @@ player2.addEventListener("click", ()=>{
     score1.show(set[0], score[0]);
     score2.show(set[1], score[1]);
 });
+
+
+// jquery
+$(document).ready(function(){
+    let current_win = "#name-win";
+    function reduce(func){
+        $( current_win ).hide("drop", {direction: "left"}, func);
+        clearInterval(timerInterv);
+    }
+
+    function show_score() {
+        current_win = "#score-win";
+        $("#icon").hide("drop", {direction: "left"}, function(){
+            $( "#score-win" ).show("drop", {direction: "left"});
+        });
+        timerInterv = setInterval(()=>{
+            timer.add_sec();
+            timer.show(time);
+        }, 1000);
+    }
+
+    function show_name(){
+        current_win = "#name-win";
+        $("#icon").hide("drop", {direction: "left"}, function(){
+            $( "#name-win" ).show("drop", {direction: "left"});
+        });
+        timerInterv = setInterval(()=>{
+            timer.add_sec();
+            timer.show(time);
+        }, 1000);
+    }
+
+    $(".reduce").click(()=>{
+        reduce($("#icon").show("drop", {direction: "left"}));
+    });
+
+    $("#score").click(show_score);
+
+    $("#name").click(show_name);
+
+    $("#nameAccept").click(()=>{
+        reduce(show_score);
+        if($("#Jean1").val() != "") nomP1 = $("#Jean1").val();
+        if($("#Jean2").val() != "") nomP2 = $("#Jean2").val();
+        $("#Jean1").val("");
+        $("#Jean2").val("");
+        name[0].innerHTML = nomP1;
+        name[1].innerHTML = nomP2;
+        score1 = new Score(0, 0, maxScore, type);
+        score2 = new Score(0, 0, maxScore, type);
+        timer = new Timer(0, 0, 0);
+        score1.show(set[0], score[0]);
+        score2.show(set[1], score[1]);
+        timer.show(time);
+    });
+
+  });
