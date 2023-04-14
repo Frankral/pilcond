@@ -50,6 +50,21 @@ class Score{
 
 }
 
+let serve1 = document.getElementById("serve1");
+let serve2 = document.getElementById("serve2");
+let serve = 0;
+
+function serve_process(){
+    serve++;
+    if(serve%4 == 0 || serve%4 == 1){
+        serve1.classList.remove("hidden");
+        serve2.classList.add("hidden");
+    } else{
+        serve1.classList.add("hidden");
+        serve2.classList.remove("hidden");
+    }
+}
+
 let name = document.getElementsByClassName("nom");
 let score = document.getElementsByClassName("score");
 let set = document.getElementsByClassName("set")
@@ -60,10 +75,6 @@ let nomP2 = "John";
 
 let score1 = new Score(0, 0);
 let score2 = new Score(0, 0);
-
-let serve1 = document.getElementById("serve1");
-let serve2 = document.getElementById("serve2");
-let serve = 0;
 
 name[0].innerHTML = nomP1;
 name[1].innerHTML = nomP2;
@@ -87,14 +98,24 @@ document.addEventListener("keydown", (event) => {
     if(event.key == "ArrowLeft"){
         score1.add(score2);
     }
-    serve++;
-    if(serve%4 == 0 || serve%4 == 1){
-        serve1.classList.remove("hidden");
-        serve2.classList.add("hidden");
-    } else{
-        serve1.classList.add("hidden");
-        serve2.classList.remove("hidden");
-    }
+    serve_process();
+    score1.show(set[0], score[0]);
+    score2.show(set[1], score[1]);
+});
+
+let player1 = document.getElementById("player1");
+let player2 = document.getElementById("player2");
+
+player1.addEventListener("click", ()=>{
+    score1.add(score2);
+    serve_process();
+    score1.show(set[0], score[0]);
+    score2.show(set[1], score[1]);
+});
+
+player2.addEventListener("click", ()=>{
+    score2.add(score1);
+    serve_process();
     score1.show(set[0], score[0]);
     score2.show(set[1], score[1]);
 });
