@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="tailwind.js"></script>
+    <title>pilcond</title>
+</head>
+<body class="bg-gradient-to-l from-blue-500 to-blue-800">
+    
+    
+    <main class="flex flex-col justify-self-center h-fit round mt-40">
+    
+    <div class="flex justify-end items-center bg-purple-600 h-10 max-md:w-80 md:w-3/6 m-auto rounded-tl-xl rounded-tr-xl">
+        
+        <svg width="24" height="24" class="text-yellow-500  rounded-full w-min mr-5 hover:text-yellow-800" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M18 10h-4v-4"></path>
+            <path d="M20 4l-6 6"></path>
+            <path d="M6 14h4v4"></path>
+            <path d="M10 14l-6 6"></path>
+         </svg>
+
+        <svg width="20" height="20" class="text-red-500 bg-red-500 rounded-full w-min mr-5 hover:text-red-800" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.2253 4.81108C5.83477 4.42056 5.20161 4.42056 4.81108 4.81108C4.42056 5.20161 4.42056 5.83477 4.81108 6.2253L10.5858 12L4.81114 17.7747C4.42062 18.1652 4.42062 18.7984 4.81114 19.1889C5.20167 19.5794 5.83483 19.5794 6.22535 19.1889L12 13.4142L17.7747 19.1889C18.1652 19.5794 18.7984 19.5794 19.1889 19.1889C19.5794 18.7984 19.5794 18.1652 19.1889 17.7747L13.4142 12L19.189 6.2253C19.5795 5.83477 19.5795 5.20161 19.189 4.81108C18.7985 4.42056 18.1653 4.42056 17.7748 4.81108L12 10.5858L6.2253 4.81108Z" fill="currentColor"/>
+        </svg>
+        
+                 
+    </div>    
+
+    <div class="rounded-bl-xl rounded-br-xl flex m-auto justify-between max-md:flex-col max-md:w-80 md:w-3/6 text-center bg-slate-200 p-20">
+        
+
+        <div id="player1">
+                <h1 class="text-5xl nom"></h1>
+                <h2 class="text-2xl set"></h2>
+                <h3 class="text-xl score"></h3>
+                <svg xmlns="http://www.w3.org/2000/svg" id="serve1" class="w-fit text-lime-400 m-auto" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                    <path d="M6 5.3a9 9 0 0 1 0 13.4"></path>
+                    <path d="M18 5.3a9 9 0 0 0 0 13.4"></path>
+                 </svg>
+            </div>
+    
+            <div id="timer"></div>
+    
+            <div id="player2">
+                <h1 class="text-5xl nom"></h1>
+                <h2 class="text-2xl set"></h2>
+                <h3 class="text-xl score"></h3>
+                <svg xmlns="http://www.w3.org/2000/svg" id="serve2" class="w-fit text-lime-400 m-auto hidden" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                    <path d="M6 5.3a9 9 0 0 1 0 13.4"></path>
+                    <path d="M18 5.3a9 9 0 0 0 0 13.4"></path>
+                 </svg>
+            </div>
+        </div>    
+        
+
+
+    </main>
+
+<script src="script.js"></script>
+</body>
+</html>
