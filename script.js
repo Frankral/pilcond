@@ -1,3 +1,9 @@
+// changing vars
+let nomP1 = "Bobo";
+let nomP2 = "John";
+let type = "normal"; // normal or speed
+let maxScore = 11;
+
 class Timer
 {
     constructor(heure, min, sec){
@@ -29,18 +35,47 @@ class Timer
 
 class Score{
 
-    constructor(score, set){
+    constructor(score, set, max, type){
         this.score = score;
         this.set = set;
+        this.max = max;
+        this.type = type;
     }
 
     add(scoreAdv){
+        if(this.type == "normal"){
+            this.add_norm(scoreAdv);
+        } 
+        else if(this.type == "speed") {
+            this.add_speed(scoreAdv);
+        }
+    }
+
+    add_norm(scoreAdv){
         this.score += 1;
-        if(this.score >= 11){
+        if(this.score >= this.max-1 && this.score === scoreAdv.score){
+            this.max++;
+            scoreAdv.max++;
+        }
+
+        if(this.score >= this.max){
+            this.set += 1
+            scoreAdv.score = 0;
+            this.score = 0;
+            this.max = 11;
+            scoreAdv.max = 11;
+        }
+        
+    }
+
+    add_speed(scoreAdv){
+        this.score += 1;
+        if(this.score >= this.max){
             this.set += 1
             scoreAdv.score = 0;
             this.score = 0;
         }
+        
     }
 
     show(elementset, elementscore){
@@ -70,11 +105,9 @@ let score = document.getElementsByClassName("score");
 let set = document.getElementsByClassName("set")
 let time = document.getElementById("timer");
 
-let nomP1 = "Bobo";
-let nomP2 = "John";
 
-let score1 = new Score(0, 0);
-let score2 = new Score(0, 0);
+let score1 = new Score(0, 0, maxScore, type);
+let score2 = new Score(0, 0, maxScore, type);
 
 name[0].innerHTML = nomP1;
 name[1].innerHTML = nomP2;
