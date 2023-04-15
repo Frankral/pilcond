@@ -156,10 +156,6 @@ let timer = new Timer(00, 00, 00);
 
 timer.show(time);
 
-let timerInterv = setInterval(()=>{
-    timer.add_sec();
-    timer.show(time);
-}, 1000);
 
 score1.show(set[0], score[0]);
 score2.show(set[1], score[1]);
