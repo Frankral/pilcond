@@ -56,7 +56,7 @@ class Score{
             this.add_norm(scoreAdv, game, player);
         } 
         else if(this.type == "speed") {
-            this.add_speed(scoreAdv, player);
+            this.add_speed(scoreAdv,game, player);
         }
     }
 
@@ -241,28 +241,40 @@ $(document).ready(function(){
         if($("#Jean2").val() != "") nomP2 = $("#Jean2").val();
         $("#Jean1").val("");
         $("#Jean2").val("");
+        type = $("#type").val();
+        if($("#set_score").val() != "") maxScore = $("#set_score").val();
+        $("#set_score").val("");
+        set_player = parseInt($("#first_serve").val());
         name[0].innerHTML = nomP1;
         name[1].innerHTML = nomP2;
         score1 = new Score(0, 0, maxScore, type);
         score2 = new Score(0, 0, maxScore, type);
         serve = 0;
+        game = new Game(false, set_player);
+        p1_serve = 0;
+        p2_serve = 1;
+        last_score = [[0,0,0,0, false, set_player]];
         timer = new Timer(0, 0, 0);
         score1.show(set[0], score[0]);
         score2.show(set[1], score[1]);
         timer.show(time);
+        serve_process();
     });
 
+
     $("#undo-btn").click(()=>{
-        score1.set = last_score[last_score.length - 2][0];
-        score1.score = last_score[last_score.length - 2][1];
-        score2.set = last_score[last_score.length - 2][2];
-        score2.score = last_score[last_score.length - 2][3];
-        game.tie = last_score[last_score.length - 2][4];
-        game.set_player = last_score[last_score.length - 2][5];
-        score1.show(set[0], score[0]);
-        score2.show(set[1], score[1]);
-        serve_process();
-        last_score.pop();  
+        if(last_score.length !== 1){
+            score1.set = last_score[last_score.length - 2][0];
+            score1.score = last_score[last_score.length - 2][1];
+            score2.set = last_score[last_score.length - 2][2];
+            score2.score = last_score[last_score.length - 2][3];
+            game.tie = last_score[last_score.length - 2][4];
+            game.set_player = last_score[last_score.length - 2][5];
+            score1.show(set[0], score[0]);
+            score2.show(set[1], score[1]);
+            serve_process();
+            last_score.pop();
+        }
         
     })
 
